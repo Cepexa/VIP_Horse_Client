@@ -7,8 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Boost REQUIRED COMPONENTS system thread)
 
-# Указываем, где искать заголовочные файлы
 add_subdirectory(libs)
+
+# Указываем, где искать заголовочные файлы
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # Собираем все подкаталоги include
@@ -26,10 +27,6 @@ endforeach()
 include_directories(${DIR_LIST})
 ###
 
-file(GLOB_RECURSE SOURCE_FILES 
-    src/*.cpp
-    main_server.cpp)
-
-add_executable(client main_client.cpp src/Client.cpp)
+add_executable(client main.cpp src/Client.cpp)
 
 target_link_libraries(client BinaryProtocol Boost::system Boost::thread)
