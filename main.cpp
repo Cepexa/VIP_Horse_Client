@@ -1,7 +1,6 @@
 #include "Client.hpp"
 
 int main() {
-    sleep(2);
     Client client("127.0.0.1", 12345);
 
     uint64_t count_req = 1;
