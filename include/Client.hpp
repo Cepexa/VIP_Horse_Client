@@ -3,6 +3,8 @@
 
 #include <boost/asio.hpp>
 #include "BinaryProtocol.hpp"
+#include "RecordExample.hpp"
+#include "ClassesList.hpp"
 
 class Client {
 public:

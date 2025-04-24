@@ -30,3 +30,4 @@ include_directories(${DIR_LIST})
 add_executable(client main.cpp src/Client.cpp)
 
 target_link_libraries(client BinaryProtocol Boost::system Boost::thread)
+target_link_libraries(client libClasses)
