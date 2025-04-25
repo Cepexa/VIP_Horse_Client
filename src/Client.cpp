@@ -7,7 +7,7 @@ Client::Client(const std::string& host, uint16_t port)
     boost::asio::connect(socket_, resolver.resolve(host, std::to_string(port)));
 }
 
-BinaryProtocol::Packet Client::sendCommand(const BinaryProtocol::Packet& packet) {
+BinaryProtocol::PacketResponse Client::sendCommand(const BinaryProtocol::PacketRequest& packet) {
     try {
         auto binaryData = packet.toBinary();
 
@@ -27,7 +27,7 @@ BinaryProtocol::Packet Client::sendCommand(const BinaryProtocol::Packet& packet)
             throw boost::system::system_error(error);
         }
 
-        BinaryProtocol::Packet response = BinaryProtocol::Packet::fromBinary({buffer.begin(), buffer.begin() + len});
+        BinaryProtocol::PacketResponse response = BinaryProtocol::PacketResponse::fromBinary({buffer.begin(), buffer.begin() + len});
         
         switch (response.header.command)
         {

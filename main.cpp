@@ -7,12 +7,12 @@ Client client("127.0.0.1", 12345);
 void* SELECT_FROM_WHERE(std::string select, std::string from,std::string where)
 {
     uint64_t count_req = 1;
-    BinaryProtocol::Packet p(BinaryProtocol::CommandType::SQLR,count_req++);
+    BinaryProtocol::PacketRequest p(BinaryProtocol::CommandType::SQLR,count_req++);
     using tags = BinaryProtocol::SQL_Tags;
     p.addData(tags::SELECT, select);
     p.addData(tags::FROM, from);
     p.addData(tags::WHERE, where);
-    BinaryProtocol::Packet pr = client.sendCommand(p);
+    BinaryProtocol::PacketResponse pr = client.sendCommand(p);
     return (void*)&pr;
 }
 

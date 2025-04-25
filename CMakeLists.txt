@@ -27,7 +27,11 @@ endforeach()
 include_directories(${DIR_LIST})
 ###
 
-add_executable(client main.cpp src/Client.cpp)
+file(GLOB_RECURSE SOURCE_FILES 
+    src/*.cpp
+    main.cpp)
+
+add_executable(client ${SOURCE_FILES})
 
 target_link_libraries(client BinaryProtocol Boost::system Boost::thread)
 target_link_libraries(client libClasses)
