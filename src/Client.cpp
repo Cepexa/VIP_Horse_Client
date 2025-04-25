@@ -34,7 +34,7 @@ BinaryProtocol::PacketResponse Client::sendCommand(const BinaryProtocol::PacketR
         case BinaryProtocol::CommandType::OK:
             std::cout << "Ответ от сервера: OK" << std::endl;
             break;            
-        case BinaryProtocol::CommandType::SQLR:
+        case BinaryProtocol::CommandType::SQL:
             std::cout << "Ответ от сервера: SQLR" << std::endl;
             break;            
         default:
