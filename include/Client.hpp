@@ -9,7 +9,7 @@
 class Client {
 public:
     Client(const std::string& host, uint16_t port);
-    BinaryProtocol::PacketResponse sendCommand(const BinaryProtocol::PacketRequest& packet);
+    std::unordered_map<std::string,std::string> sendCommand(const BinaryProtocol::PacketRequest& packet);
 
 private:
     boost::asio::io_context io_context_;

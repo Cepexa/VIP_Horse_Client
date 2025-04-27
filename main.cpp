@@ -4,7 +4,7 @@
 Client client("127.0.0.1", 12345);
 
 
-void* SELECT_FROM_WHERE(std::string select, std::string from,std::string where)
+std::unordered_map<std::string,std::string> SELECT_FROM_WHERE(std::string select, std::string from,std::string where)
 {
     uint64_t count_req = 1;
     BinaryProtocol::PacketRequest p(BinaryProtocol::CommandType::SQL,count_req++);
@@ -12,8 +12,8 @@ void* SELECT_FROM_WHERE(std::string select, std::string from,std::string where)
     p.addData(tags::SELECT, select);
     p.addData(tags::FROM, from);
     p.addData(tags::WHERE, where);
-    BinaryProtocol::PacketResponse pr = client.sendCommand(p);
-    return (void*)&pr;
+    
+    return client.sendCommand(p);
 }
 
 int main() {
